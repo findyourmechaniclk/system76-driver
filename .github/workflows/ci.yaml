@@ -12,6 +12,12 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v5
+    - name: Cache apt packages
+      uses: actions/cache@v4
+      continue-on-error: true
+      with:
+        path: /var/cache/apt/archives
+        key: ${{ runner.os }}-apt-${{ hashFiles('.github/workflows/ci.yaml') }}
     - name: Install deps
       run: |
         sudo apt-get --quiet update
