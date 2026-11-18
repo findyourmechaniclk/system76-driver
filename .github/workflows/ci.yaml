@@ -2,6 +2,7 @@
 # SPDX-FileCopyrightText: NONE
 
 on:
+  workflow_dispatch:
   push:
 
 name: CI
